@@ -14,4 +14,9 @@ class ProductController extends Controller {
         const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset)};
         ctx.body = await ctx.model.Product.findAll(query);
     }
+
+    async show() {
+        const ctx = this.ctx;
+        ctx.body = await ctx.model.Product.findById(ctx.params.id)
+    }
 }
