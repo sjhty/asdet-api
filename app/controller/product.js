@@ -20,3 +20,5 @@ class ProductController extends Controller {
         ctx.body = await ctx.model.Product.findById(ctx.params.id)
     }
 }
+
+module.exports = ProductController
