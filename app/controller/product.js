@@ -19,6 +19,14 @@ class ProductController extends Controller {
         const ctx = this.ctx;
         ctx.body = await ctx.model.Product.findById(ctx.params.id)
     }
+
+    async create() {
+        const ctx = this.ctx;
+        const { category_id, title, subTitle, imgUrl, size, stock, supplier, createTime, modifyTime } = ctx.request.body;
+        const product = await ctx.model.Product.create({ category_id, title, subTitle, imgUrl, size, stock, supplier, createTime, modifyTime });
+        ctx.status = 201;
+        ctx.body = product;
+    }
 }
 
 module.exports = ProductController
